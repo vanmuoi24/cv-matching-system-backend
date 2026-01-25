@@ -11,8 +11,7 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring",
         uses = {
-                UserMapper.class,
-                CompanyMapper.class,
+            
                 ApplicationMapper.class
 })
 public interface JobMapper {

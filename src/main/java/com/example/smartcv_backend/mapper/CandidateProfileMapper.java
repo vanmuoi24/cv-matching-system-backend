@@ -9,15 +9,20 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring",
-        uses = {
-                UserMapper.class
-        }
-)
+@Mapper(componentModel = "spring")
 public interface CandidateProfileMapper {
+
     CandidateProfile toCandidateProfile(CandidateProfileCreateRequest request);
-    CandidateProfileResponse toUserResponse(CandidateProfile candidateProfile);
-    java.util.List<CandidateProfileResponse> toUserResponseList(java.util.Set<CandidateProfile> candidateProfiles);
+
+    CandidateProfileResponse toCandidateProfileResponse(CandidateProfile candidateProfile);
+
+    java.util.List<CandidateProfileResponse> toCandidateProfileResponseList(
+        java.util.Set<CandidateProfile> candidateProfiles
+    );
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateCandidateProfileFromRequest(CandidateProfileUpdateRequest request, @MappingTarget CandidateProfile candidateProfile);
+    void updateCandidateProfileFromRequest(
+        CandidateProfileUpdateRequest request,
+        @MappingTarget CandidateProfile candidateProfile
+    );
 }
