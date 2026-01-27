@@ -24,6 +24,6 @@ public class CompanyResponse {
     String status;
     LocalDateTime createAt;
     String role;
-    UserResponse owner;
+    UserInfoResponse owner;
     JobResponse job;
 }

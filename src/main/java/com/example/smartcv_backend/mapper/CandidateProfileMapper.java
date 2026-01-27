@@ -9,7 +9,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",
+    uses = {
+        UserInfoMapper.class
+    }
+)
 public interface CandidateProfileMapper {
 
     CandidateProfile toCandidateProfile(CandidateProfileCreateRequest request);

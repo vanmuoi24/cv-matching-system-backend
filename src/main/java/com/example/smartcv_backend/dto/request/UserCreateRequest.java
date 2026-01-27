@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class UserCreateRequest {
-    String full_name;
+    String fullName;
     String email;
     String password;
     String role;

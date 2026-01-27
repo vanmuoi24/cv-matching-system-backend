@@ -2,6 +2,8 @@ package com.example.smartcv_backend.dto.response;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import com.example.smartcv_backend.mapper.UserInfoMapper;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -12,10 +14,10 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
-public class JobResponse {
+public class JobInfoResponse {
     int id;
     UserInfoResponse createdBy;
-//    CompanyResponse companyId;
+    CompanyInfoResponse company;
     String title;
     String description;
     String requirement;
@@ -28,5 +30,4 @@ public class JobResponse {
     String status;
     LocalDateTime createAt;
     LocalDateTime expiredAt;
-    List<ApplicationInfoResponse> applicationList;
 }

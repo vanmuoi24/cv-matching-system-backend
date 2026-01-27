@@ -1,4 +1,4 @@
-package com.example.smartcv_backend.dto.request;
+package com.example.smartcv_backend.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -12,10 +12,13 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
-public class ApplicationUpdateRequest {
-
-    Float similarityScore;
+public class CompanyInfoResponse {
+    Long id;
+    String name;
+    String description;
+    String website;
+    String logoUrl;
     String status;
-    // LocalDateTime appliedAt;
-
+    LocalDateTime createAt;
+    String role;
 }

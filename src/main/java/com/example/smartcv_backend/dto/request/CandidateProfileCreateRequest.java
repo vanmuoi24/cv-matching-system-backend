@@ -12,7 +12,6 @@ import lombok.experimental.FieldDefaults;
 @Setter
 public class CandidateProfileCreateRequest {
     Long userId;
-
     String summary;
     String skills;
     String experienceYear;

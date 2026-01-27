@@ -4,6 +4,7 @@ import com.example.smartcv_backend.entity.Application;
 import com.example.smartcv_backend.entity.CandidateProfile;
 import com.example.smartcv_backend.entity.Company;
 import com.example.smartcv_backend.entity.Job;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -32,8 +33,8 @@ public class UserResponse {
     LocalDateTime updateAt;
     String role;
     CandidateProfileResponse profile;
-    List<JobResponse> jobList;
-    List<ApplicationResponse> applicationList;
-    List<CompanyResponse> companies;
+    List<JobInfoResponse> jobList;
+//    List<ApplicationResponse> applicationList;
+    List<CompanyInfoResponse> companies;
 
 }

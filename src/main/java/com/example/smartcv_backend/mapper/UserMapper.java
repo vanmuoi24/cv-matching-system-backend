@@ -13,14 +13,15 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 @Mapper(
     componentModel = "spring",
     uses = {
-        ApplicationMapper.class,
-        CandidateProfileMapper.class
+        CandidateProfileMapper.class,
+        JobInfoMapper.class,
+        CompanyInfoMapper.class
     }
 )
 public interface UserMapper {
 
-    @Mapping(source = "full_name", target = "fullName")
-    @Mapping(source = "password", target = "password")
+//    @Mapping(source = "fullName", target = "fullName")
+//    @Mapping(source = "password", target = "password")
     User toUser(UserCreateRequest request);
 
     UserResponse toUserResponse(User user);

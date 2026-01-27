@@ -16,7 +16,7 @@ public class ApplicationCreateRequest {
 
     Long candidateId;
     Long jobId;
-    float similarityScore;
+    Float similarityScore;
     String status;
     LocalDateTime appliedAt;
 }

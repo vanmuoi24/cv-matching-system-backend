@@ -14,6 +14,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,6 +45,10 @@ public class UserService {
 
         // Encode password
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setFullName("");
+        user.setStatus("");
+        user.setRole("USER");
+        user.setCreateAt(LocalDateTime.now());
 
 
         try {
@@ -75,7 +80,7 @@ public class UserService {
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
         // Update phone và address nếu khác null
-        Optional.ofNullable(req.getFull_name()).ifPresent(user::setFullName);
+        Optional.ofNullable(req.getFullName()).ifPresent(user::setFullName);
         Optional.ofNullable(req.getRole()).ifPresent(user::setRole);
 
         userRepository.save(user);

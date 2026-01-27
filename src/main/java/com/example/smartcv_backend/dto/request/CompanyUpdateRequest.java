@@ -18,8 +18,6 @@ public class CompanyUpdateRequest {
     String website;
     String logoUrl;
     String status;
-    String role;
-
     Long ownerId;     // chỉ gửi userId
     LocalDateTime createAt;
 

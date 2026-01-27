@@ -34,9 +34,6 @@ public class Company {
     @Column
     private LocalDateTime createAt;
 
-    @Column(nullable = false)
-    private String role;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "owner_id",

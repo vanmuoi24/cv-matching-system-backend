@@ -22,7 +22,16 @@ public enum ErrorCode {
     EMAIL_IS_REQUIRED(1009, "Email is required", HttpStatus.BAD_REQUEST),
     INVALID_TOKEN(1010, "Invalid token", HttpStatus.UNAUTHORIZED),
     EXPIRED_TOKEN(1011, "Token is expired", HttpStatus.UNAUTHORIZED),
-    PASSWORD_NOT_MATCH(1012, "Password not match", HttpStatus.BAD_REQUEST);
+    PASSWORD_NOT_MATCH(1012, "Password not match", HttpStatus.BAD_REQUEST),
+
+    INVALID_JOB(1012, "Job not existed", HttpStatus.NOT_FOUND),
+    APPLICATION_EXISTED(1013, "Application existed", HttpStatus.BAD_REQUEST),
+    APPLICATION_NOT_EXISTED(1014, "Application not existed", HttpStatus.NOT_FOUND),
+
+    JOB_NOT_EXISTED(1015, "Job not existed", HttpStatus.NOT_FOUND),
+
+    CANDIDATE_PROFILE_NOT_EXISTED(1016, "Candidate profile not existed", HttpStatus.NOT_FOUND)
+    ;
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
         this.code = code;

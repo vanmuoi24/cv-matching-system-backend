@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "candidate_profiles")
 @Getter
@@ -12,13 +16,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CandidateProfile {
     @Id
-    private Long UserId;
+    private Long userId;
 
     @OneToOne
     @MapsId
     @JoinColumn(name = "user_id")
     private User user;
-
+    
     @Column
     private String summary;
 

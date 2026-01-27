@@ -30,7 +30,7 @@ public class Application {
     private Job job;
 
     @Column
-    private float similarityScore;
+    private Float similarityScore;
 
     @Column(nullable = false)
     private String status;

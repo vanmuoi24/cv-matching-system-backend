@@ -1,9 +1,10 @@
-package com.example.smartcv_backend.dto.request;
+package com.example.smartcv_backend.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -12,13 +13,13 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
-public class CompanyCreateRequest {
-
-    String name;
-    String description;
-    String website;
-    String logoUrl;
+public class UserInfoResponse {
+    Long id;
+    String fullName;
+    String email;
     String status;
-    Long ownerId;     // chỉ gửi userId
     LocalDateTime createAt;
+    LocalDateTime updateAt;
+    String role;
+    // CandidateProfileResponse profile;
 }
