@@ -1,0 +1,54 @@
+# SmartCV Backend API Endpoints
+
+Here is the list of available API endpoints for testing with Postman.
+
+## Authentication & User Management
+**Base URL**: `/users`
+
+| Method | Endpoint | Description | Payload (Body) |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/users/register` | Register a new user | `UserCreateRequest` (JSON) |
+| `POST` | `/users/login` | Login | `AuthenticationRequest` (JSON) |
+| `POST` | `/users/refresh` | Refresh JWT Token | `RefreshRequest` (JSON) |
+| `POST` | `/users/logout` | Logout | `LogoutRequest` (JSON) |
+| `POST` | `/users/Change-password` | Change Password | `ChangePasswordRequest` (JSON) |
+| `GET` | `/users/list` | Get list of users | - |
+| `GET` | `/users/{id}` | Get user by ID | - |
+| `POST` | `/users/UpdateUser/{id}` | Update user details | `UserUpdateRequest` (FormData) |
+| `DELETE` | `/users/{id}` | Delete user | - |
+
+## Jobs
+**Base URL**: `/jobs`
+
+| Method | Endpoint | Description | Payload (Body) |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/jobs` | Create a new job | `JobCreateRequest` (JSON) |
+| `GET` | `/jobs/list` | Get list of jobs | - |
+| `GET` | `/jobs/{id}` | Get job details | - |
+| `POST` | `/jobs/update/{id}` | Update job | `JobUpdateRequest` (JSON) |
+| `DELETE` | `/jobs/{id}` | Delete job | - |
+
+## Applications
+**Base URL**: `/applications`
+
+| Method | Endpoint | Description | Payload (Body) |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/applications` | Create an application | `ApplicationCreateRequest` (JSON) |
+| `GET` | `/applications/list` | Get list of applications | - |
+| `GET` | `/applications/{id}` | Get application details | - |
+| `POST` | `/applications/update/{id}` | Update application | `ApplicationUpdateRequest` (JSON) |
+| `DELETE` | `/applications/{id}` | Delete application | - |
+
+## Candidate Profiles
+**Base URL**: `/candidate-profiles`
+
+| Method | Endpoint | Description | Payload (Body) |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/candidate-profiles` | Create a profile | `CandidateProfileCreateRequest` (JSON) |
+| `GET` | `/candidate-profiles/list` | List all profiles | - |
+| `GET` | `/candidate-profiles/{id}` | Get profile by ID | - |
+| `POST` | `/candidate-profiles/update/{id}` | Update profile | `CandidateProfileUpdateRequest` (JSON) |
+| `DELETE` | `/candidate-profiles/{id}` | Delete profile | - |
+
+---
+**Note**: Most `POST` requests require `Content-Type: application/json`, except for `/users/UpdateUser/{id}` which uses `@ModelAttribute` and likely expects `multipart/form-data` or `x-www-form-urlencoded`.

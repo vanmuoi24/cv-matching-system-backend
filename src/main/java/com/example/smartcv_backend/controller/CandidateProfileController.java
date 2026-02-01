@@ -26,19 +26,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
-
 @RestController
 @RequestMapping("/candidate-profiles")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CandidateProfileController {
-    
+
     CandidateProfileService candidateProfileService;
 
     @GetMapping("/{id}")
     public ApiResponse<CandidateProfileResponse> getCandidateProfileById(@PathVariable Long id) {
-        return ApiResponse.<CandidateProfileResponse>builder().result(candidateProfileService.getCandidateProfileById(id)).build();
+        return ApiResponse.<CandidateProfileResponse>builder()
+                .result(candidateProfileService.getCandidateProfileById(id)).build();
     }
 
     @GetMapping("/list")
@@ -48,11 +47,11 @@ public class CandidateProfileController {
                 .build();
     }
 
-    @PostMapping()
-    ApiResponse<CandidateProfileResponse> createCandidateProfile(@RequestBody CandidateProfileCreateRequest request){
+    @PostMapping(consumes = { "multipart/form-data" })
+    ApiResponse<CandidateProfileResponse> createCandidateProfile(
+            @ModelAttribute CandidateProfileCreateRequest request) {
         var result = candidateProfileService.createCandidateProfile(request);
-        return ApiResponse.<CandidateProfileResponse>builder().result(result).
-                build();
+        return ApiResponse.<CandidateProfileResponse>builder().result(result).build();
     }
 
     @PostMapping("/update/{id}")
@@ -60,10 +59,11 @@ public class CandidateProfileController {
             @PathVariable Long id,
             @RequestBody CandidateProfileUpdateRequest request) {
 
-        return ApiResponse.<CandidateProfileResponse>builder().result(candidateProfileService.updateCandidateProfile(id, request))
+        return ApiResponse.<CandidateProfileResponse>builder()
+                .result(candidateProfileService.updateCandidateProfile(id, request))
                 .build();
     }
-    
+
     @DeleteMapping("/{id}")
     public ApiResponse<Void> deleteCandidateProfile(@PathVariable Long id) {
         candidateProfileService.deleteCandidateProfile(id);

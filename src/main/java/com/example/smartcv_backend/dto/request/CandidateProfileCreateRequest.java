@@ -2,6 +2,7 @@ package com.example.smartcv_backend.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @NoArgsConstructor
@@ -17,4 +18,5 @@ public class CandidateProfileCreateRequest {
     String experienceYear;
     String cvText;
     String cvFileUrl;
+    MultipartFile cvFile;
 }
