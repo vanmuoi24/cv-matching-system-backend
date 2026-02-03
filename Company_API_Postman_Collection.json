@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "company-api-test",
+		"name": "SmartCV Company API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/companies",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Company By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/companies/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"companies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Company",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"SmartCV Tech\",\n    \"description\": \"Leading AI Recruitment Platform\",\n    \"website\": \"https://smartcv.tech\",\n    \"logoUrl\": \"https://smartcv.tech/logo.png\",\n    \"status\": \"ACTIVE\",\n    \"ownerId\": 2\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/companies",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Company",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"SmartCV Technology Inc.\",\n    \"description\": \"Updated Description needed here.\",\n    \"website\": \"https://smartcv.tech/updated\",\n    \"logoUrl\": \"https://smartcv.tech/new-logo.png\",\n    \"status\": \"active\",\n    \"ownerId\": 2\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/companies/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"companies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/companies/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"companies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

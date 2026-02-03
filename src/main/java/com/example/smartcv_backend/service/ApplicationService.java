@@ -2,11 +2,8 @@ package com.example.smartcv_backend.service;
 
 import com.example.smartcv_backend.dto.request.ApplicationCreateRequest;
 import com.example.smartcv_backend.dto.request.ApplicationUpdateRequest;
-import com.example.smartcv_backend.dto.request.UserUpdateRequest;
 import com.example.smartcv_backend.dto.response.ApplicationResponse;
-import com.example.smartcv_backend.dto.response.UserResponse;
 import com.example.smartcv_backend.entity.Application;
-import com.example.smartcv_backend.entity.User;
 import com.example.smartcv_backend.exception.AppException;
 import com.example.smartcv_backend.exception.ErrorCode;
 import com.example.smartcv_backend.mapper.ApplicationMapper;
