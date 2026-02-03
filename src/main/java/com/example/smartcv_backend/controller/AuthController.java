@@ -47,7 +47,7 @@ public class AuthController {
         return ApiResponse.<Void>builder().build();
     }
 
-    @PostMapping("/Change-password")
+    @PostMapping("/change-password")
     ApiResponse<Void> changePassword(@RequestBody ChangePasswordRequest request) throws ParseException, JOSEException {
         authService.changePassword(request);
         return ApiResponse.<Void>builder().message("Change password successfully").build();

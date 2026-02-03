@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -32,6 +33,15 @@ public class DataInitializer {
                 userRepository.save(admin);
 
                 System.out.println("✅ Admin account created!");
+            }
+            // If password hasn't been encoded use this code for set password dafault = 123456
+            else {
+                List<User> users = userRepository.findAll();
+                for (User user : users) {
+                        user.setPassword(passwordEncoder.encode("123456"));
+                        userRepository.save(user);
+                        System.out.println("✅ Password for user " + user.getEmail() + " has been encoded.");
+                }
             }
         };
     }
