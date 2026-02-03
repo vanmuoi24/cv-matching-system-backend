@@ -9,15 +9,17 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-@Mapper(componentModel = "spring",
-        uses = {
-                ApplicationMapper.class,
-                UserInfoMapper.class
+@Mapper(componentModel = "spring", uses = {
+        ApplicationMapper.class,
+        UserInfoMapper.class
 })
 public interface JobMapper {
     Job toJob(JobCreateRequest request);
-    JobResponse toJobResponse (Job job);
+
+    JobResponse toJobResponse(Job job);
+
     java.util.List<JobResponse> toJobResponseList(java.util.Set<Job> jobs);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateJobFromRequest(JobUpdateRequest request, @MappingTarget Job job);
 }
