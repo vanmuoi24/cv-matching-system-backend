@@ -77,33 +77,74 @@ CREATE TABLE IF NOT EXISTS invalidated_token (
     id VARCHAR(255) PRIMARY KEY,
     expiry_time DATETIME
 );
+INSERT INTO users (`id`, `full_name`, `password_hash`, `email`, `status`, `create_at`, `update_at`, `role`) VALUES
+(1,'Asmin','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','admin@job.com','ACTIVE',NOW(),NOW(),'ADMIN'),
+(2,'Recruiter A','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','rec1@job.com','ACTIVE',NOW(),NOW(),'RECRUITER'),
+(3,'Recruiter B','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','rec2@job.com','ACTIVE',NOW(),NOW(),'RECRUITER'),
+(4,'Candidate A','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','c1@job.com','ACTIVE',NOW(),NOW(),'CANDIDATE'),
+(5,'Candidate B','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','c2@job.com','ACTIVE',NOW(),NOW(),'CANDIDATE'),
+(6,'Candidate C','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','c3@job.com','ACTIVE',NOW(),NOW(),'CANDIDATE'),
+(7,'Candidate D','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','c4@job.com','ACTIVE',NOW(),NOW(),'CANDIDATE'),
+(8,'Candidate E','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','c5@job.com','ACTIVE',NOW(),NOW(),'CANDIDATE'),
+(9,'Candidate F','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','c6@job.com','ACTIVE',NOW(),NOW(),'CANDIDATE'),
+(10,'Candidate G','$10$a6iZN2LTRYm.lmse9nIaFOC6fLpiXrLXZBW6X0bV7xq6XnKlZ/No.','c7@job.com','BLOCKED',NOW(),NOW(),'CANDIDATE');
 
--- Insert Users
--- Password for all is "123456" -> $2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOcd7qa8qX5H.
-INSERT INTO users (full_name, password_hash, email, status, create_at, update_at, role) VALUES 
-('Admin User', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOcd7qa8qX5H.', 'admin@smartcv.com', 'ACTIVE', NOW(), NOW(), 'ADMIN'),
-('Employer One', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOcd7qa8qX5H.', 'employer1@smartcv.com', 'ACTIVE', NOW(), NOW(), 'EMPLOYER'),
-('Employer Two', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOcd7qa8qX5H.', 'employer2@smartcv.com', 'ACTIVE', NOW(), NOW(), 'EMPLOYER'),
-('Candidate One', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOcd7qa8qX5H.', 'candidate1@smartcv.com', 'ACTIVE', NOW(), NOW(), 'CANDIDATE'),
-('Candidate Two', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOcd7qa8qX5H.', 'candidate2@smartcv.com', 'ACTIVE', NOW(), NOW(), 'CANDIDATE');
+-- =========================
+-- INSERT CANDIDATE_PROFILES
+-- =========================
+INSERT INTO candidate_profiles VALUES
+(4,'Java Dev',JSON_ARRAY('Java','Spring'),2,'API Dev','/cv/1.pdf',NOW()),
+(5,'Frontend Dev',JSON_ARRAY('React','JS'),3,'UI Dev','/cv/2.pdf',NOW()),
+(6,'Fullstack Dev',JSON_ARRAY('Java','React'),4,'FS Dev','/cv/3.pdf',NOW()),
+(7,'Android Dev',JSON_ARRAY('Kotlin'),2,'Mobile','/cv/4.pdf',NOW()),
+(8,'Data Analyst',JSON_ARRAY('SQL','Python'),1,'Data','/cv/5.pdf',NOW()),
+(9,'AI Engineer',JSON_ARRAY('ML','Python'),3,'AI','/cv/6.pdf',NOW()),
+(10,'QA Engineer',JSON_ARRAY('Testing'),2,'QA','/cv/7.pdf',NOW()),
+(1,'Backend Intern',JSON_ARRAY('Java'),1,'Intern','/cv/8.pdf',NOW()),
+(2,'UI Designer',JSON_ARRAY('Figma'),2,'Design','/cv/9.pdf',NOW()),
+(3,'DevOps',JSON_ARRAY('Docker'),3,'DevOps','/cv/10.pdf',NOW());
 
--- Insert Companies
-INSERT INTO companies (name, description, website, logo_url, status, create_at, owner_id) VALUES
-('Tech Corp', 'Leading tech company in AI.', 'https://techcorp.com', 'https://techcorp.com/logo.png', 'ACTIVE', NOW(), 2),
-('Soft Solutions', 'Innovative software solutions.', 'https://softsolutions.com', 'https://softsolutions.com/logo.png', 'ACTIVE', NOW(), 3);
+-- =========================
+-- INSERT COMPANIES
+-- =========================
+INSERT INTO companies (`id`, `name`, `description`, `website`, `logo_url`, `owner_id`, `status`, `create_at`) VALUES
+(1,'TechSoft','Software','tech.com','/l1.png',2,'ACTIVE',NOW()),
+(2,'DataCorp','Data','data.com','/l2.png',2,'ACTIVE',NOW()),
+(3,'AILab','AI','ai.com','/l3.png',3,'ACTIVE',NOW()),
+(4,'FinTech','Finance','fin.com','/l4.png',3,'ACTIVE',NOW()),
+(5,'Cloudify','Cloud','cloud.com','/l5.png',2,'ACTIVE',NOW()),
+(6,'MobileX','Mobile','mobile.com','/l6.png',3,'ACTIVE',NOW()),
+(7,'GameStudio','Game','game.com','/l7.png',2,'ACTIVE',NOW()),
+(8,'EduTech','Edu','edu.com','/l8.png',3,'ACTIVE',NOW()),
+(9,'HealthPlus','Health','health.com','/l9.png',2,'ACTIVE',NOW()),
+(10,'EcomPro','Ecom','ecom.com','/l10.png',3,'ACTIVE',NOW());
 
--- Insert Jobs
-INSERT INTO jobs (create_by, company_id, title, description, requirement, skills, location, job_type, category, min_salary, max_salary, status, create_at, expired_at) VALUES
-(2, 1, 'Java Backend Developer', 'Develop robust backend systems.', '3+ years Java experience.', 'Java, Spring Boot, MySQL', 'San Francisco, CA', 'FULL_TIME', 'Software Development', 80000, 120000, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
-(2, 1, 'Frontend Developer', 'Create beautiful UIs.', '2+ years React experience.', 'React, TypeScript, CSS', 'Remote', 'FULL_TIME', 'Software Development', 70000, 110000, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
-(3, 2, 'Data Scientist', 'Analyze large datasets.', 'Strong Python and ML skills.', 'Python, Pandas, Scikit-Learn', 'New York, NY', 'PART_TIME', 'Data Science', 60000, 90000, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY));
+-- =========================
+-- INSERT JOBS
+-- =========================
+INSERT INTO jobs VALUES
+(1,1,2,'Java Dev','Backend','Java 2y',JSON_ARRAY('Java'), 'HN','FULL_TIME','IT',1000,2000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
+(2,2,2,'Data Analyst','Data','SQL',JSON_ARRAY('SQL'), 'HCM','FULL_TIME','DATA',900,1800,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
+(3,3,3,'AI Eng','AI','ML',JSON_ARRAY('ML'), 'HN','FULL_TIME','AI',1500,3000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 45 DAY)),
+(4,4,3,'Backend','API','Spring',JSON_ARRAY('Spring'), 'DN','FULL_TIME','IT',1200,2200,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
+(5,5,2,'DevOps','CI/CD','Docker',JSON_ARRAY('Docker'), 'HN','FULL_TIME','DEVOPS',1300,2500,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 60 DAY)),
+(6,6,3,'Android','Mobile','Kotlin',JSON_ARRAY('Kotlin'), 'HCM','FULL_TIME','MOBILE',1000,2000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
+(7,7,2,'Game Dev','Game','Unity',JSON_ARRAY('Unity'), 'HN','FULL_TIME','GAME',1100,2100,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
+(8,8,3,'Frontend','UI','React',JSON_ARRAY('React'), 'HN','FULL_TIME','FE',900,1800,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
+(9,9,2,'QA','Test','Auto',JSON_ARRAY('Selenium'), 'HCM','FULL_TIME','QA',800,1500,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
+(10,10,3,'PM','Manage','Agile',JSON_ARRAY('Agile'), 'HN','FULL_TIME','PM',1500,3000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 45 DAY));
 
--- Insert Candidate Profiles
-INSERT INTO candidate_profiles (user_id, summary, skills, experience_year, cv_text, cv_file_url, update_at) VALUES
-(4, 'Passionate Java Developer with 4 years of experience.', 'Java, Spring Boot, SQL', '4 years', 'Resume text content...', 'https://smartcv.com/cvs/candidate1.pdf', NOW()),
-(5, 'Data enthusiast looking for opportunities.', 'Python, R, SQL', '2 years', 'Resume text content...', 'https://smartcv.com/cvs/candidate2.pdf', NOW());
-
--- Insert Applications
-INSERT INTO applications (candidate_id, job_id, similarity_score, status, applied_at) VALUES
-(4, 1, 0.85, 'PENDING', NOW()),
-(5, 3, 0.90, 'REVIEWING', NOW());
+-- =========================
+-- INSERT APPLICATIONS
+-- =========================
+INSERT INTO applications VALUES
+(1,1,4,0.85,'PENDING',NOW()),
+(2,2,5,0.80,'PENDING',NOW()),
+(3,3,6,0.90,'SHORTLISTED',NOW()),
+(4,4,7,0.78,'REJECTED',NOW()),
+(5,5,8,0.88,'PENDING',NOW()),
+(6,6,9,0.92,'SHORTLISTED',NOW()),
+(7,7,10,0.70,'REJECTED',NOW()),
+(8,8,4,0.83,'PENDING',NOW()),
+(9,9,5,0.79,'PENDING',NOW()),
+(10,10,6,0.95,'HIRED',NOW());
