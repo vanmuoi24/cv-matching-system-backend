@@ -1,9 +1,7 @@
 package com.example.smartcv_backend.dto.response;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-import com.example.smartcv_backend.mapper.UserInfoMapper;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

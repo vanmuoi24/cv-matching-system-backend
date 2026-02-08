@@ -1,8 +1,5 @@
 package com.example.smartcv_backend.dto.response;
 
-import com.example.smartcv_backend.entity.Job;
-import com.example.smartcv_backend.entity.User;
-import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

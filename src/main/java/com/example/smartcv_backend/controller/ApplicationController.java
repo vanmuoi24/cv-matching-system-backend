@@ -2,8 +2,6 @@ package com.example.smartcv_backend.controller;
 
 import com.example.smartcv_backend.dto.response.ApiResponse;
 import com.example.smartcv_backend.dto.response.ApplicationResponse;
-import com.example.smartcv_backend.dto.response.UserResponse;
-import com.example.smartcv_backend.entity.Application;
 import com.example.smartcv_backend.service.ApplicationService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +12,6 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 import com.example.smartcv_backend.dto.request.ApplicationCreateRequest;
 import com.example.smartcv_backend.dto.request.ApplicationUpdateRequest;
-import com.example.smartcv_backend.dto.request.UserUpdateRequest;
-
 
 @RestController
 @RequestMapping("/applications")
@@ -26,10 +22,9 @@ public class ApplicationController {
     ApplicationService applicationService;
 
     @PostMapping()
-    ApiResponse<ApplicationResponse> createApplication(@RequestBody ApplicationCreateRequest request){
+    ApiResponse<ApplicationResponse> createApplication(@RequestBody ApplicationCreateRequest request) {
         var result = applicationService.createApplication(request);
-        return ApiResponse.<ApplicationResponse>builder().result(result).
-                build();
+        return ApiResponse.<ApplicationResponse>builder().result(result).build();
     }
 
     @GetMapping("/{id}")
@@ -37,7 +32,7 @@ public class ApplicationController {
         return ApiResponse.<ApplicationResponse>builder().result(applicationService.getApplicationById(id)).build();
     }
 
-       @GetMapping("/list")
+    @GetMapping("/list")
     public ApiResponse<List<ApplicationResponse>> listApplications() {
         return ApiResponse.<List<ApplicationResponse>>builder()
                 .result(applicationService.getAllApplication())
@@ -52,11 +47,11 @@ public class ApplicationController {
         return ApiResponse.<ApplicationResponse>builder().result(applicationService.updateApplication(id, request))
                 .build();
     }
+
     @DeleteMapping("/{id}")
     public ApiResponse<Void> deleteUser(@PathVariable Long id) {
         applicationService.deleteApplication(id);
         return ApiResponse.<Void>builder().build();
     }
 
-    
 }

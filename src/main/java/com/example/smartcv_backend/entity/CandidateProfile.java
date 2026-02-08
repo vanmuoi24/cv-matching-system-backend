@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 @Table(name = "candidate_profiles")
 @Getter
@@ -22,7 +18,7 @@ public class CandidateProfile {
     @MapsId
     @JoinColumn(name = "user_id")
     private User user;
-    
+
     @Column
     private String summary;
 
