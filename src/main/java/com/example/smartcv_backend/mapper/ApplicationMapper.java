@@ -8,11 +8,12 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", uses = {
                 JobMapper.class,
                 UserInfoMapper.class
-})
+}, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ApplicationMapper {
         Application toApplication(ApplicationCreateRequest request);
 

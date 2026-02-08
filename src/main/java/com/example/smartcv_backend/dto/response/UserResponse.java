@@ -1,19 +1,9 @@
 package com.example.smartcv_backend.dto.response;
 
-import com.example.smartcv_backend.entity.Application;
-import com.example.smartcv_backend.entity.CandidateProfile;
-import com.example.smartcv_backend.entity.Company;
-import com.example.smartcv_backend.entity.Job;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
-import java.util.List;
-import java.time.LocalDateTime;
-import com.example.smartcv_backend.entity.Job;
-import com.example.smartcv_backend.entity.User;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -26,7 +16,7 @@ public class UserResponse {
 
     Long id;
     String fullName;
-//    String password;
+    // String password;
     String email;
     String status;
     LocalDateTime createAt;
@@ -34,7 +24,7 @@ public class UserResponse {
     String role;
     CandidateProfileResponse profile;
     List<JobInfoResponse> jobList;
-//    List<ApplicationResponse> applicationList;
+    // List<ApplicationResponse> applicationList;
     List<CompanyInfoResponse> companies;
 
 }

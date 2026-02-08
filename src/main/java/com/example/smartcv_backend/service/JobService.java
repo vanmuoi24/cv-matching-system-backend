@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class JobService {
-    private final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(JobService.class);
     private final JobRepository jobRepository;
     private final JobMapper jobMapper;
     private final JobInfoMapper jobInfoMapper;
