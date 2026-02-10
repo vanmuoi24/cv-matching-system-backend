@@ -3,15 +3,12 @@ package com.example.smartcv_backend.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.smartcv_backend.dto.request.ApplicationCreateRequest;
-import com.example.smartcv_backend.dto.request.ApplicationUpdateRequest;
 import com.example.smartcv_backend.dto.request.CandidateProfileCreateRequest;
 import com.example.smartcv_backend.dto.request.CandidateProfileUpdateRequest;
 import com.example.smartcv_backend.dto.response.ApiResponse;
 import com.example.smartcv_backend.dto.response.CandidateProfileResponse;
 import com.example.smartcv_backend.service.CandidateProfileService;
 
-import jakarta.websocket.server.PathParam;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,7 +19,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

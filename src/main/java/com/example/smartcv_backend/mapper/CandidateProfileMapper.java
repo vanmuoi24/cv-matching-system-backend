@@ -8,12 +8,11 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring",
-    uses = {
+@Mapper(componentModel = "spring", uses = {
         UserInfoMapper.class
-    }
-)
+}, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CandidateProfileMapper {
 
     CandidateProfile toCandidateProfile(CandidateProfileCreateRequest request);
@@ -21,12 +20,10 @@ public interface CandidateProfileMapper {
     CandidateProfileResponse toCandidateProfileResponse(CandidateProfile candidateProfile);
 
     java.util.List<CandidateProfileResponse> toCandidateProfileResponseList(
-        java.util.Set<CandidateProfile> candidateProfiles
-    );
+            java.util.Set<CandidateProfile> candidateProfiles);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateCandidateProfileFromRequest(
-        CandidateProfileUpdateRequest request,
-        @MappingTarget CandidateProfile candidateProfile
-    );
+            CandidateProfileUpdateRequest request,
+            @MappingTarget CandidateProfile candidateProfile);
 }

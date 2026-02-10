@@ -22,17 +22,16 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
+
     public UserResponse createUser(UserCreateRequest request) {
 
         // Validate các trường bắt buộc
         if (request.getEmail() == null || request.getEmail().isBlank()) {
             throw new AppException(ErrorCode.USER_NOT_EXISTED);
         }
-
 
         // Check email tồn tại
         userRepository.findByEmail(request.getEmail())
@@ -50,7 +49,6 @@ public class UserService {
         user.setRole("USER");
         user.setCreateAt(LocalDateTime.now());
 
-
         try {
             user = userRepository.save(user);
         } catch (DataIntegrityViolationException ex) {
@@ -59,6 +57,7 @@ public class UserService {
 
         return userMapper.toUserResponse(user);
     }
+
     public List<UserResponse> getAllUser() {
         List<User> users = userRepository.findAll();
         return users.stream()
@@ -72,7 +71,6 @@ public class UserService {
                 .orElseThrow(() -> new AppException(ErrorCode.User_name));
 
     }
-
 
     @Transactional
     public UserResponse updateUser(Long id, UserUpdateRequest req) {

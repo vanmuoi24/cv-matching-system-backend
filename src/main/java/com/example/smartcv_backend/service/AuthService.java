@@ -25,7 +25,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.security.Permission;
 import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -37,7 +36,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthService {
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AuthService.class);
 
     UserRepository userRepository;
     InvalidatedTokenRepository invalidatedTokenRepository;
@@ -100,6 +98,7 @@ public class AuthService {
             throw new RuntimeException(e);
         }
     }
+
     private String buildScope(User user) {
         StringJoiner stringJoiner = new StringJoiner(" ");
         if (user.getRole() != null) {
@@ -132,7 +131,6 @@ public class AuthService {
 
             throw new AppException(ErrorCode.EXPIRED_TOKEN);
         }
-
 
         String jti = signedJWT.getJWTClaimsSet().getJWTID();
         if (invalidatedTokenRepository.existsById(jti)) {

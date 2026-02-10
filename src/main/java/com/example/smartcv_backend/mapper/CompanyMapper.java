@@ -8,16 +8,19 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring",
-        uses = {
+@Mapper(componentModel = "spring", uses = {
                 JobMapper.class,
                 UserInfoMapper.class
-        })
+}, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface CompanyMapper {
-    Company toCompany(CompanyCreateRequest request);
-    CompanyResponse toUserResponse(Company company);
-    java.util.List<CompanyResponse> toUserResponseList(java.util.Set<Company> companys);
-    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateCompanyFromRequest(CompanyUpdateRequest request, @MappingTarget Company company);
+        Company toCompany(CompanyCreateRequest request);
+
+        CompanyResponse toUserResponse(Company company);
+
+        java.util.List<CompanyResponse> toUserResponseList(java.util.Set<Company> companys);
+
+        @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+        void updateCompanyFromRequest(CompanyUpdateRequest request, @MappingTarget Company company);
 }
