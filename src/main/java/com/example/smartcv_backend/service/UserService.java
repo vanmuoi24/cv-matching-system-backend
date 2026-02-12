@@ -44,9 +44,22 @@ public class UserService {
 
         // Encode password
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setFullName("");
-        user.setStatus("");
-        user.setRole("USER");
+
+        // Use values from request or defaults
+        if (request.getFullName() != null) {
+            user.setFullName(request.getFullName());
+        } else {
+            user.setFullName("");
+        }
+
+        user.setStatus("ACTIVE"); // Set default status to ACTIVE instead of empty
+
+        if (request.getRole() != null && !request.getRole().isEmpty()) {
+            user.setRole(request.getRole());
+        } else {
+            user.setRole("USER");
+        }
+
         user.setCreateAt(LocalDateTime.now());
 
         try {
