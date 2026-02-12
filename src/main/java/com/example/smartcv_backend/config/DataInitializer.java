@@ -35,14 +35,14 @@ public class DataInitializer {
                 System.out.println("✅ Admin account created!");
             }
             // If password hasn't been encoded use this code for set password dafault = 123456
-            else {
-                List<User> users = userRepository.findAll();
-                for (User user : users) {
-                        user.setPassword(passwordEncoder.encode("123456"));
-                        userRepository.save(user);
-                        System.out.println("✅ Password for user " + user.getEmail() + " has been encoded.");
-                }
-            }
+            // else {
+            //     List<User> users = userRepository.findAll();
+            //     for (User user : users) {
+            //             user.setPassword(passwordEncoder.encode("123456"));
+            //             userRepository.save(user);
+            //             System.out.println("✅ Password for user " + user.getEmail() + " has been encoded.");
+            //     }
+            // }
         };
     }
 }

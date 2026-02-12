@@ -20,5 +20,4 @@ public class CompanyInfoResponse {
     String logoUrl;
     String status;
     LocalDateTime createAt;
-    String role;
 }

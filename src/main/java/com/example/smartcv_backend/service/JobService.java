@@ -35,6 +35,7 @@ public class JobService {
     public JobResponse createJob(JobCreateRequest request) {
         if (request.getCreatedById() == null) {
             throw new AppException(ErrorCode.User_name);
+            // request.setCreatedById(Long.valueOf(1));
         }
         if (request.getCompanyId() == null) {
             throw new AppException(ErrorCode.INVALID_KEY);
@@ -76,6 +77,10 @@ public class JobService {
     @Transactional
     public JobResponse updateJob(Long id, JobUpdateRequest req) {
         Job job = jobRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.JOB_NOT_EXISTED));
+
+        Company company = companyRepository.findById(req.getCompanyId())
+                .orElseThrow(() -> new AppException(ErrorCode.INVALID_KEY));
+        job.setCompany(company);
 
         jobMapper.updateJobFromRequest(req, job);
 

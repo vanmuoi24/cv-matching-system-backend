@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class JobUpdateRequest {
+    Long companyId;
     String title;
     String description;
     String requirement;

@@ -33,7 +33,7 @@ public class SecurityConfig {
     };
 
     private final String[] PUBLIC_GET_URLS = {
-            "/reviews/high-rating"
+            "/reviews/high-rating",
     };
 
     private final CustomJwtDecoder customJwtDecoder;
