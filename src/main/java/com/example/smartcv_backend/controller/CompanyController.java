@@ -8,6 +8,7 @@ import com.example.smartcv_backend.service.CompanyService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,8 @@ public class CompanyController {
 
     CompanyService companyService;
 
-    @PostMapping
-    public ApiResponse<CompanyResponse> createCompany(@RequestBody CompanyCreateRequest request) {
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ApiResponse<CompanyResponse> createCompany(@ModelAttribute CompanyCreateRequest request) {
         return ApiResponse.<CompanyResponse>builder()
                 .result(companyService.createCompany(request))
                 .build();
@@ -41,9 +42,9 @@ public class CompanyController {
                 .build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ApiResponse<CompanyResponse> updateCompany(@PathVariable Long id,
-            @RequestBody CompanyUpdateRequest request) {
+            @ModelAttribute CompanyUpdateRequest request) {
         return ApiResponse.<CompanyResponse>builder()
                 .result(companyService.updateCompany(id, request))
                 .build();
