@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,12 +27,23 @@ public class CompanyService {
     CompanyRepository companyRepository;
     UserRepository userRepository;
     CompanyMapper companyMapper;
+    CloudinaryService cloudinaryService;
 
     public CompanyResponse createCompany(CompanyCreateRequest request) {
         User owner = userRepository.findById(request.getOwnerId())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
         Company company = companyMapper.toCompany(request);
+
+        if (request.getLogo() != null && !request.getLogo().isEmpty()) {
+            try {
+                String uploadedUrl = cloudinaryService.uploadImage(request.getLogo());
+                company.setLogoUrl(uploadedUrl);
+            } catch (IOException e) {
+                throw new AppException(ErrorCode.UPLOAD_FAILED);
+            }
+        }
+
         company.setOwner(owner);
         company.setCreateAt(LocalDateTime.now());
         company.setStatus("ACTIVE"); // Default status
@@ -55,6 +67,15 @@ public class CompanyService {
                 .orElseThrow(() -> new AppException(ErrorCode.COMPANY_NOT_EXISTED));
 
         companyMapper.updateCompanyFromRequest(request, company);
+
+        if (request.getLogo() != null && !request.getLogo().isEmpty()) {
+            try {
+                String uploadedUrl = cloudinaryService.uploadImage(request.getLogo());
+                company.setLogoUrl(uploadedUrl);
+            } catch (IOException e) {
+                throw new AppException(ErrorCode.UPLOAD_FAILED);
+            }
+        }
 
         if (request.getOwnerId() != null) {
             User owner = userRepository.findById(request.getOwnerId())
