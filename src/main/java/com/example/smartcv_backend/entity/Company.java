@@ -41,7 +41,7 @@ public class Company {
     )
     private User owner;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Job> jobList;
 
 }

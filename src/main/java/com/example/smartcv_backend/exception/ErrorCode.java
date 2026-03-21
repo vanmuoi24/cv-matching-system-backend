@@ -31,7 +31,8 @@ public enum ErrorCode {
     JOB_NOT_EXISTED(1015, "Job not existed", HttpStatus.NOT_FOUND),
 
     CANDIDATE_PROFILE_NOT_EXISTED(1016, "Candidate profile not existed", HttpStatus.NOT_FOUND),
-    COMPANY_NOT_EXISTED(1017, "Company not existed", HttpStatus.NOT_FOUND);
+    COMPANY_NOT_EXISTED(1017, "Company not existed", HttpStatus.NOT_FOUND),
+    UPLOAD_FAILED(1018, "Upload failed", HttpStatus.INTERNAL_SERVER_ERROR);
 
     ErrorCode(int code, String message, HttpStatusCode statusCode) {
         this.code = code;
