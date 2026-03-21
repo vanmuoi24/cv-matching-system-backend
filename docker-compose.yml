@@ -10,4 +10,3 @@ services:
       MYSQL_DATABASE: smartcv
     ports:
       - "3306:3306"
-

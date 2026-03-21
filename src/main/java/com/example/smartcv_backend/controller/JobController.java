@@ -9,6 +9,10 @@ import com.example.smartcv_backend.service.JobService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +27,10 @@ public class JobController {
 
     @PostMapping
     ApiResponse<JobResponse> createJob(@RequestBody JobCreateRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Jwt jwt = (Jwt) authentication.getPrincipal();  
+        Long userId =  Long.valueOf(jwt.getSubject());
+        request.setCreatedById(userId);
         return ApiResponse.<JobResponse>builder().result(jobService.createJob(request)).build();
     }
 
@@ -36,7 +44,7 @@ public class JobController {
         return ApiResponse.<JobInfoResponse>builder().result(jobService.getJobById(id)).build();
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ApiResponse<JobResponse> updateJob(@PathVariable Long id, @RequestBody JobUpdateRequest request) {
         return ApiResponse.<JobResponse>builder().result(jobService.updateJob(id, request)).build();
     }

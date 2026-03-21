@@ -15,7 +15,7 @@ import lombok.experimental.FieldDefaults;
 public class JobResponse {
     int id;
     UserInfoResponse createdBy;
-//    CompanyResponse companyId;
+    CompanyInfoResponse company;
     String title;
     String description;
     String requirement;

@@ -6,15 +6,19 @@ import com.example.smartcv_backend.dto.response.JobResponse;
 import com.example.smartcv_backend.entity.Job;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", uses = {
         ApplicationMapper.class,
-        UserInfoMapper.class
+        UserInfoMapper.class,
+        CompanyInfoMapper.class
 }, unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface JobMapper {
+
+
     Job toJob(JobCreateRequest request);
 
     JobResponse toJobResponse(Job job);

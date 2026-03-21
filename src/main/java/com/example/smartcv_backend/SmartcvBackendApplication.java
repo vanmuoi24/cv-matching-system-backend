@@ -9,5 +9,4 @@ public class SmartcvBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SmartcvBackendApplication.class, args);
 	}
-
 }
