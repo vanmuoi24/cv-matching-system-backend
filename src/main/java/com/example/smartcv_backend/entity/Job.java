@@ -72,7 +72,7 @@ public class Job {
     @Column
     private LocalDateTime expiredAt;
 
-    @OneToMany(mappedBy = "job")
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Application> applicationList;
 
 }
