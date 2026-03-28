@@ -32,8 +32,8 @@ public class JobController {
     }
 
     @GetMapping("/{id}")
-    public ApiResponse<JobInfoResponse> getJobById(@PathVariable Long id) {
-        return ApiResponse.<JobInfoResponse>builder().result(jobService.getJobById(id)).build();
+    public ApiResponse<JobResponse> getJobById(@PathVariable Long id) {
+        return ApiResponse.<JobResponse>builder().result(jobService.getJobById(id)).build();
     }
 
     @PostMapping("/update/{id}")

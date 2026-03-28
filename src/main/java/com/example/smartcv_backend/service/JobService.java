@@ -63,9 +63,9 @@ public class JobService {
         return jobMapper.toJobResponse(job);
     }
 
-    public JobInfoResponse getJobById(Long id) {
+    public JobResponse getJobById(Long id) {
         return jobRepository.findById(id)
-                .map(jobInfoMapper::toJobInfoResponse)
+                .map(jobMapper::toJobResponse)
                 .orElseThrow(() -> new AppException(ErrorCode.JOB_NOT_EXISTED));
     }
 

@@ -54,4 +54,11 @@ public class ApplicationController {
         return ApiResponse.<Void>builder().build();
     }
 
+    @GetMapping("/candidate/{candidateId}")
+    public ApiResponse<List<ApplicationResponse>> getApplicationsByCandidateId(@PathVariable Long candidateId) {
+        return ApiResponse.<List<ApplicationResponse>>builder()
+                .result(applicationService.getApplicationsByCandidateId(candidateId))
+                .build();
+    }
+
 }

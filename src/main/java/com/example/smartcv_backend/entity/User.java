@@ -33,7 +33,7 @@ public class User {
     @Column
     private LocalDateTime createAt;
 
-    @Column
+        @Column
     private LocalDateTime updateAt;
 
     @Column(nullable = false)

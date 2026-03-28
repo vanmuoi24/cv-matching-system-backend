@@ -87,4 +87,10 @@ public class ApplicationService {
                 .orElseThrow(() -> new AppException(ErrorCode.APPLICATION_NOT_EXISTED));
         applicationRepository.delete(application);
     }
+
+    public List<ApplicationResponse> getApplicationsByCandidateId(Long userId) {
+        return applicationRepository.findByCandidateId(userId).stream()
+                .map(applicationMapper::toApplicationResponse)
+                .collect(Collectors.toList());
+    }
 }
