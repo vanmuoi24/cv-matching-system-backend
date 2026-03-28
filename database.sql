@@ -122,29 +122,34 @@ INSERT INTO companies (`id`, `name`, `description`, `website`, `logo_url`, `owne
 -- =========================
 -- INSERT JOBS
 -- =========================
-INSERT INTO jobs VALUES
-(1,1,2,'Java Dev','Backend','Java 2y',JSON_ARRAY('Java'), 'HN','FULL_TIME','IT',1000,2000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
-(2,2,2,'Data Analyst','Data','SQL',JSON_ARRAY('SQL'), 'HCM','FULL_TIME','DATA',900,1800,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
-(3,3,3,'AI Eng','AI','ML',JSON_ARRAY('ML'), 'HN','FULL_TIME','AI',1500,3000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 45 DAY)),
-(4,4,3,'Backend','API','Spring',JSON_ARRAY('Spring'), 'DN','FULL_TIME','IT',1200,2200,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
-(5,5,2,'DevOps','CI/CD','Docker',JSON_ARRAY('Docker'), 'HN','FULL_TIME','DEVOPS',1300,2500,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 60 DAY)),
-(6,6,3,'Android','Mobile','Kotlin',JSON_ARRAY('Kotlin'), 'HCM','FULL_TIME','MOBILE',1000,2000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
-(7,7,2,'Game Dev','Game','Unity',JSON_ARRAY('Unity'), 'HN','FULL_TIME','GAME',1100,2100,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
-(8,8,3,'Frontend','UI','React',JSON_ARRAY('React'), 'HN','FULL_TIME','FE',900,1800,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
-(9,9,2,'QA','Test','Auto',JSON_ARRAY('Selenium'), 'HCM','FULL_TIME','QA',800,1500,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 30 DAY)),
-(10,10,3,'PM','Manage','Agile',JSON_ARRAY('Agile'), 'HN','FULL_TIME','PM',1500,3000,'OPEN',NOW(),DATE_ADD(NOW(),INTERVAL 45 DAY));
+INSERT INTO jobs
+(id, company_id, create_by, title, description, requirement, skills, location, job_type, category, min_salary, max_salary, status, create_at, expired_at)
+VALUES
+(1, 1, 2, 'Java Dev', 'Backend', 'Java 2y', JSON_ARRAY('Java'), 'HN', 'FULL_TIME', 'IT', 1000, 2000, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(2, 2, 2, 'Data Analyst', 'Data', 'SQL', JSON_ARRAY('SQL'), 'HCM', 'FULL_TIME', 'DATA', 900, 1800, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(3, 3, 3, 'AI Engineer', 'AI', 'Machine Learning', JSON_ARRAY('ML'), 'HN', 'FULL_TIME', 'AI', 1500, 3000, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 45 DAY)),
+(4, 4, 3, 'Backend Developer', 'API Development', 'Spring Framework', JSON_ARRAY('Spring'), 'DN', 'FULL_TIME', 'IT', 1200, 2200, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(5, 5, 2, 'DevOps Engineer', 'CI/CD Pipeline', 'Docker experience', JSON_ARRAY('Docker'), 'HN', 'FULL_TIME', 'DEVOPS', 1300, 2500, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 60 DAY)),
+(6, 6, 3, 'Android Developer', 'Mobile App', 'Kotlin experience', JSON_ARRAY('Kotlin'), 'HCM', 'FULL_TIME', 'MOBILE', 1000, 2000, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(7, 7, 2, 'Game Developer', 'Game Development', 'Unity experience', JSON_ARRAY('Unity'), 'HN', 'FULL_TIME', 'GAME', 1100, 2100, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(8, 8, 3, 'Frontend Developer', 'UI Development', 'React experience', JSON_ARRAY('React'), 'HN', 'FULL_TIME', 'FE', 900, 1800, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(9, 9, 2, 'QA Engineer', 'Software Testing', 'Automation testing', JSON_ARRAY('Selenium'), 'HCM', 'FULL_TIME', 'QA', 800, 1500, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 30 DAY)),
+(10, 10, 3, 'Project Manager', 'Project Management', 'Agile methodology', JSON_ARRAY('Agile'), 'HN', 'FULL_TIME', 'PM', 1500, 3000, 'OPEN', NOW(), DATE_ADD(NOW(), INTERVAL 45 DAY));
+
 
 -- =========================
 -- INSERT APPLICATIONS
 -- =========================
-INSERT INTO applications VALUES
-(1,1,4,0.85,'PENDING',NOW()),
-(2,2,5,0.80,'PENDING',NOW()),
-(3,3,6,0.90,'SHORTLISTED',NOW()),
-(4,4,7,0.78,'REJECTED',NOW()),
-(5,5,8,0.88,'PENDING',NOW()),
-(6,6,9,0.92,'SHORTLISTED',NOW()),
-(7,7,10,0.70,'REJECTED',NOW()),
-(8,8,4,0.83,'PENDING',NOW()),
-(9,9,5,0.79,'PENDING',NOW()),
-(10,10,6,0.95,'HIRED',NOW());
+INSERT INTO applications
+(id, job_id, candidate_id, similarity_score, status, applied_at)
+VALUES
+(1, 1, 4, 0.85, 'PENDING', NOW()),
+(2, 2, 5, 0.80, 'PENDING', NOW()),
+(3, 3, 6, 0.90, 'SHORTLISTED', NOW()),
+(4, 4, 7, 0.78, 'REJECTED', NOW()),
+(5, 5, 8, 0.88, 'PENDING', NOW()),
+(6, 6, 9, 0.92, 'SHORTLISTED', NOW()),
+(7, 7, 10, 0.70, 'REJECTED', NOW()),
+(8, 8, 4, 0.83, 'PENDING', NOW()),
+(9, 9, 5, 0.79, 'PENDING', NOW()),
+(10, 10, 6, 0.95, 'HIRED', NOW());

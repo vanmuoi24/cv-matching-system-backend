@@ -20,7 +20,6 @@ public class CompanyResponse {
     String logoUrl;
     String status;
     LocalDateTime createAt;
-    String role;
     UserInfoResponse owner;
     JobResponse job;
 }
