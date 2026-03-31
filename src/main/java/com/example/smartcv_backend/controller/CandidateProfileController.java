@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/candidate-profiles")
@@ -50,10 +49,10 @@ public class CandidateProfileController {
         return ApiResponse.<CandidateProfileResponse>builder().result(result).build();
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping(value = "/update/{id}", consumes = { "multipart/form-data" })
     public ApiResponse<CandidateProfileResponse> updateCandidate(
             @PathVariable Long id,
-            @RequestBody CandidateProfileUpdateRequest request) {
+            @ModelAttribute CandidateProfileUpdateRequest request) {
 
         return ApiResponse.<CandidateProfileResponse>builder()
                 .result(candidateProfileService.updateCandidateProfile(id, request))

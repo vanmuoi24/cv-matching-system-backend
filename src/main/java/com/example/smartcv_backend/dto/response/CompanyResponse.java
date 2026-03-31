@@ -21,5 +21,5 @@ public class CompanyResponse {
     String status;
     LocalDateTime createAt;
     UserInfoResponse owner;
-    JobResponse job;
+    java.util.List<JobResponse> jobList;
 }

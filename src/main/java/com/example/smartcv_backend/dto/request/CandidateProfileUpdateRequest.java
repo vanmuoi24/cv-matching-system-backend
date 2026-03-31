@@ -2,6 +2,7 @@ package com.example.smartcv_backend.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -20,6 +21,7 @@ public class CandidateProfileUpdateRequest {
     String experienceYear;
     String cvText;
     String cvFileUrl;
+    MultipartFile cvFile;
     LocalDateTime updatedAt;
 
 }

@@ -58,7 +58,7 @@ public class CandidateProfileService {
 
         if (request.getCvFile() != null && !request.getCvFile().isEmpty()) {
             try {
-                String cvUrl = cloudinaryService.uploadImage(request.getCvFile());
+                String cvUrl = cloudinaryService.uploadCV(request.getCvFile(), user.getId());
                 profile.setCvFileUrl(cvUrl);
             } catch (java.io.IOException e) {
                 log.error("Failed to upload CV file", e);
@@ -78,6 +78,18 @@ public class CandidateProfileService {
         var candidateProfile = candidateProfileRepository.findById(id)
                 .orElseThrow(() -> new AppException(ErrorCode.CANDIDATE_PROFILE_NOT_EXISTED));
         candidateProfile.setUpdateAt(LocalDateTime.now());
+        
+        if (request.getCvFile() != null && !request.getCvFile().isEmpty()) {
+            try {
+                String cvUrl = cloudinaryService.uploadCV(request.getCvFile(), id);
+                candidateProfile.setCvFileUrl(cvUrl);
+                request.setCvFileUrl(cvUrl);
+            } catch (java.io.IOException e) {
+                log.error("Failed to upload CV file", e);
+                throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
+            }
+        }
+
         candidateProfileMapper.updateCandidateProfileFromRequest(request, candidateProfile);
         candidateProfile = candidateProfileRepository.save(candidateProfile);
         return candidateProfileMapper.toCandidateProfileResponse(candidateProfile);

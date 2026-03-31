@@ -9,5 +9,10 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     long count();
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"profile"})
     Optional<User> findByEmail(String email);
+
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"profile"})
+    @Override
+    Optional<User> findById(Long id);
 }

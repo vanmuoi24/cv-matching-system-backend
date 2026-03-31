@@ -19,7 +19,7 @@ public class CandidateProfile {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String summary;
 
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class CandidateProfile {
     @Column
     private String experienceYear;
 
-    @Column
+    @Column(columnDefinition = "LONGTEXT")
     private String cvText;
 
     @Column
